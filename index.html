@@ -4,237 +4,673 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Adarsh Kumar — Software Development Intern, full-stack developer and competitive programmer.">
-  <title>Adarsh Kumar | Developer Portfolio</title>
+  <meta name="color-scheme" content="light dark">
+  <title>Adarsh Kumar | Software Engineer</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b1020;
-      --panel: #111a2e;
-      --panel2: #151f36;
-      --text: #eef2ff;
-      --muted: #a5b1cc;
-      --line: rgba(164, 180, 220, .17);
-      --accent: #a78bfa;
-      --accent2: #38bdf8;
-      --green: #86efac;
+      /* One surface color; depth comes only from paired light and dark shadows */
+      --bg: #e4e9f0;
+      --hi: #ffffff;
+      --lo: #bcc6d4;
+      --ink: #172336;
+      --steel: #4a586b;
+      --accent: #2446c9;
+      --ok: #1b7f5c;
+      --c-teal: #0d7a8a;
+      --c-amber: #98590a;
+      --c-rose: #b0365a;
+      --c-green: #1b7f5c;
+      --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+      --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+      --raise-lg: 12px 12px 28px var(--lo), -12px -12px 28px var(--hi);
+      --raise-md: 7px 7px 16px var(--lo), -7px -7px 16px var(--hi);
+      --raise-sm: 4px 4px 9px var(--lo), -4px -4px 9px var(--hi);
+      --press-md: inset 6px 6px 13px var(--lo), inset -6px -6px 13px var(--hi);
+      --press-sm: inset 3px 3px 7px var(--lo), inset -3px -3px 7px var(--hi);
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --bg: #1c2430;
+        --hi: #28323f;
+        --lo: #10151c;
+        --ink: #e8edf3;
+        --steel: #9aa9bb;
+        --accent: #86a3ff;
+        --ok: #4cc79a;
+        --c-teal: #5fd0e0;
+        --c-amber: #f2b04a;
+        --c-rose: #ff8fab;
+        --c-green: #4cc79a;
+      }
+    }
+
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 32px; }
     body {
-      margin: 0; color: var(--text);
-      background: radial-gradient(ellipse at 80% 0%, #24205a 0, transparent 34%), var(--bg);
-      font: 15px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
     }
+    p { margin: 0; }
     a { color: inherit; text-decoration: none; }
-    a:hover { color: var(--accent2); }
-    .shell { width: min(1180px, calc(100% - 36px)); margin: 26px auto 50px; }
-    .topbar { display:flex; justify-content:space-between; align-items:center; gap:18px; margin-bottom:22px; }
-    .brand { font-weight:800; letter-spacing:.3px; font-size:18px; }
-    .brand span { color:var(--accent); }
-    nav { display:flex; gap:20px; flex-wrap:wrap; color:var(--muted); font-size:13px; }
-    .layout { display:grid; grid-template-columns: 280px minmax(0, 1fr); gap:20px; align-items:start; }
-    .panel { background:rgba(17,26,46,.88); border:1px solid var(--line); border-radius:20px; box-shadow:0 18px 55px rgba(0,0,0,.16); }
-    aside { padding:24px; position:sticky; top:18px; }
-    .avatar { width:82px; height:82px; display:grid; place-items:center; border-radius:25px; color:#fff; font-size:25px; font-weight:800; background:linear-gradient(135deg,#7c3aed,#0ea5e9); box-shadow:0 10px 30px #6d28d944; }
-    .name { margin:16px 0 0; font-size:24px; line-height:1.2; }
-    .role { color:var(--muted); margin:7px 0 15px; }
-    .pill { display:inline-block; padding:5px 10px; border:1px solid #245a4a; background:#12342c; color:var(--green); border-radius:999px; font-size:11px; }
-    .side-links { display:grid; gap:9px; margin:20px 0; }
-    .side-links a { color:#c7d2fe; padding:8px 10px; border-radius:9px; background:rgba(255,255,255,.035); font-size:13px; overflow-wrap:anywhere; }
-    .side-title { color:#f5f3ff; font-size:12px; text-transform:uppercase; letter-spacing:1.4px; margin:22px 0 8px; }
-    .small { color:var(--muted); font-size:12px; overflow-wrap:anywhere; }
-    main { min-width:0; }
-    .hero { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; overflow:hidden; padding:30px 26px 25px 32px; min-height:300px; background:linear-gradient(120deg,rgba(26,34,67,.96),rgba(35,19,77,.9)); }
-    .eyebrow { color:var(--accent2); font-size:12px; font-weight:800; letter-spacing:2px; text-transform:uppercase; }
-    h1 { font-size:clamp(30px,4vw,47px); line-height:1.1; letter-spacing:-1.6px; margin:12px 0; }
-    h1 span { background:linear-gradient(90deg,#c4b5fd,#67e8f9); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .hero p { color:#c0c9e0; max-width:510px; }
-    .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; }
-    .btn { padding:10px 15px; border-radius:10px; font-size:13px; font-weight:700; border:1px solid var(--line); }
-    .btn.primary { background:linear-gradient(100deg,#7c3aed,#2563eb); border:0; }
-    .hero-art { width:100%; max-height:270px; object-fit:contain; mix-blend-mode:normal; border-radius:12px; }
-    .section { padding:23px; margin-top:18px; }
-    .section-head { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px; }
-    h2 { font-size:18px; margin:0; letter-spacing:-.3px; }
-    .section-head span { color:var(--muted); font-size:12px; }
-    .about { color:#c2cbe0; margin:0; }
-    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
-    .stat { padding:14px; background:var(--panel2); border:1px solid var(--line); border-radius:13px; }
-    .stat strong { display:block; font-size:23px; color:#ddd6fe; line-height:1.3; }
-    .stat span { color:var(--muted); font-size:11px; }
-    .skills { display:flex; flex-wrap:wrap; gap:8px; }
-    .skill { border:1px solid #3b4263; background:#1a2340; color:#dbeafe; padding:7px 10px; border-radius:9px; font-size:12px; }
-    .projects { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-    .project { padding:17px; border-radius:14px; background:var(--panel2); border:1px solid var(--line); }
-    .project h3 { margin:0 0 5px; font-size:16px; }
-    .project p { color:var(--muted); font-size:13px; margin:7px 0 12px; }
-    .tech { color:#c4b5fd; font-size:11px; }
-    .project a { display:inline-block; margin-top:10px; color:#7dd3fc; font-size:12px; font-weight:700; }
-    .timeline { display:grid; gap:14px; }
-    .entry { border-left:2px solid #8b5cf6; padding:0 0 0 15px; }
-    .entry strong { display:block; }
-    .entry .meta { color:var(--accent2); font-size:12px; }
-    .entry p { margin:5px 0 0; color:var(--muted); font-size:13px; }
-    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    ul.clean { margin:8px 0 0; padding-left:18px; color:var(--muted); font-size:13px; }
-    ul.clean li { margin:7px 0; }
-    footer { color:#7886a7; text-align:center; padding:24px 0 0; font-size:12px; }
-    @media (max-width:900px) {
-      .layout { grid-template-columns:1fr; }
-      aside { position:static; }
-      .side-links { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .hero { grid-template-columns:1fr .75fr; }
-      .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    a:focus-visible, .skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 12px; }
+    .skip { position: absolute; left: -999px; top: 10px; padding: 8px 14px; background: var(--bg); box-shadow: var(--raise-sm); border-radius: 12px; z-index: 10; }
+    .skip:focus { left: 10px; }
+
+    /* groove divider: a pressed hairline made of a dark and a light line */
+    .sep {
+      background:
+        linear-gradient(var(--lo), var(--lo)) left top / 100% 1px no-repeat,
+        linear-gradient(var(--hi), var(--hi)) left 1px / 100% 1px no-repeat;
     }
-    @media (max-width:600px) {
-      .shell { width:min(100% - 22px,1180px); margin-top:12px; }
-      .topbar { align-items:flex-start; flex-direction:column; }
-      nav { gap:12px; }
-      .hero { grid-template-columns:1fr; padding:24px; }
-      .hero-art { max-height:220px; margin-top:10px; }
-      .projects,.two-col { grid-template-columns:1fr; }
-      .section { padding:18px; }
-      .side-links { grid-template-columns:1fr; }
+
+    .frame {
+      width: min(1220px, calc(100% - 56px)); margin: 0 auto; padding: 44px 0 64px;
+      display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 40px; align-items: start;
+    }
+
+    /* ---------- rail ---------- */
+    .rail {
+      position: sticky; top: 44px; padding: 28px 22px 24px;
+      background: var(--bg); border-radius: 26px; box-shadow: var(--raise-lg);
+      display: flex; flex-direction: column; gap: 28px; max-height: calc(100vh - 88px);
+    }
+    .mark { font-family: var(--serif); font-size: 27px; line-height: 1.1; padding: 0 6px; }
+    .rail nav { display: grid; gap: 8px; }
+    .rail nav a {
+      padding: 9px 14px; border-radius: 13px; font-size: 14px; color: var(--steel);
+      transition: box-shadow .18s, color .18s;
+    }
+    .rail nav a:hover { color: var(--ink); box-shadow: var(--raise-sm); }
+    .rail nav a.on { color: var(--accent); font-weight: 500; box-shadow: var(--press-sm); }
+    .links { display: grid; gap: 8px; }
+    .links a {
+      padding: 9px 14px; border-radius: 13px; font-size: 13px; color: var(--ink);
+      box-shadow: var(--raise-sm); transition: box-shadow .15s, color .15s; overflow-wrap: anywhere;
+    }
+    .links a:hover { color: var(--accent); }
+    .links a:active { box-shadow: var(--press-sm); }
+
+    /* ---------- panels ---------- */
+    main { display: grid; gap: 36px; min-width: 0; }
+    .panel { background: var(--bg); border-radius: 28px; box-shadow: var(--raise-lg); padding: 44px 44px 46px; }
+    h2 { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.15; margin: 0 0 28px; letter-spacing: -.01em; }
+    h3 { font-size: 17px; font-weight: 600; margin: 0; }
+    .muted { color: var(--steel); }
+
+    .row { display: grid; grid-template-columns: 180px minmax(0, 1fr); column-gap: 32px; padding: 16px 0; }
+    .row + .row { padding-top: 17px; }
+    .row:first-of-type { padding-top: 0; }
+    .row + .row { background:
+        linear-gradient(var(--lo), var(--lo)) left top / 100% 1px no-repeat,
+        linear-gradient(var(--hi), var(--hi)) left 1px / 100% 1px no-repeat; }
+    .row .k { color: var(--steel); font-size: 14px; padding-top: 2px; }
+    .row .v { max-width: 66ch; }
+
+    /* ---------- hero ---------- */
+    .hero-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 36px; align-items: center; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(46px, 5.8vw, 78px);
+      line-height: .98; letter-spacing: -.025em; margin: 0 0 26px;
+    }
+    .art { padding: 12px; border-radius: 26px; box-shadow: var(--press-md); }
+    .art img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: contain; border-radius: 16px; background: #1b1840; }
+    .lede { font-size: 20px; line-height: 1.5; max-width: 34em; }
+    .lede + .lede { margin-top: 14px; color: var(--steel); font-size: 17px; }
+
+    /* trace: a screen pressed into the surface */
+    .well { margin-top: 44px; padding: 14px; border-radius: 22px; box-shadow: var(--press-md); }
+    .screen { border-radius: 14px; background: #0e1a28; color: #c9d5e3; overflow: hidden; font: 400 13px/1.7 var(--mono); }
+    .screen-bar { display: flex; justify-content: space-between; gap: 16px; padding: 10px 18px; color: #7f93aa; font-size: 12px; border-bottom: 1px solid #1f3044; }
+    .screen-body { padding: 18px 18px 20px; display: grid; gap: 2px; overflow-x: auto; }
+    .ln { display: grid; grid-template-columns: 22px auto; white-space: pre; opacity: 0; animation: reveal .35s ease forwards; }
+    .ln i { font-style: normal; color: #5d7089; }
+    .ln .bad { color: #ff8a80; } .ln .ok { color: #5fd7a8; } .ln .dim { color: #7f93aa; }
+    .ln.gap { height: 10px; }
+    .ln:nth-child(1) { animation-delay: .15s; } .ln:nth-child(2) { animation-delay: .45s; }
+    .ln:nth-child(3) { animation-delay: .75s; } .ln:nth-child(4) { animation-delay: 1.05s; }
+    .ln:nth-child(5) { animation-delay: 1.35s; } .ln:nth-child(6) { animation-delay: 1.5s; }
+    .ln:nth-child(7) { animation-delay: 1.95s; } .ln:nth-child(8) { animation-delay: 2.25s; }
+    .ln:nth-child(9) { animation-delay: 2.55s; }
+    @keyframes reveal { to { opacity: 1; } }
+
+    .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 36px; }
+    .fact { padding: 20px 22px; border-radius: 20px; box-shadow: var(--raise-md); }
+    .fact b { display: block; font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.1; }
+    .fact span { color: var(--steel); font-size: 13px; }
+
+    /* ---------- experience ---------- */
+    .role-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+    .when { color: var(--steel); font-size: 14px; padding: 4px 14px; border-radius: 999px; box-shadow: var(--press-sm); }
+    .bullets { margin: 20px 0 0; padding: 0; list-style: none; max-width: 68ch; }
+    .bullets li { position: relative; padding: 15px 0 15px 26px; }
+    .bullets li + li { background:
+        linear-gradient(var(--lo), var(--lo)) left top / 100% 1px no-repeat,
+        linear-gradient(var(--hi), var(--hi)) left 1px / 100% 1px no-repeat; }
+    .bullets li::before { content: ""; position: absolute; left: 2px; top: 24px; width: 8px; height: 8px; border-radius: 50%; box-shadow: var(--press-sm); background: var(--accent); }
+
+    /* ---------- projects ---------- */
+    .project { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 36px; padding: 30px 0; }
+    .project:first-of-type { padding-top: 0; }
+    .project:last-child { padding-bottom: 0; }
+    .project + .project { background:
+        linear-gradient(var(--lo), var(--lo)) left top / 100% 1px no-repeat,
+        linear-gradient(var(--hi), var(--hi)) left 1px / 100% 1px no-repeat; }
+    .project h3 { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.15; margin-bottom: 10px; }
+    .project.minor h3 { font-size: 25px; }
+    .project p { max-width: 58ch; }
+    .project p + p { margin-top: 10px; color: var(--steel); }
+    .btn {
+      display: inline-block; margin-top: 20px; padding: 10px 18px; border-radius: 14px;
+      font-size: 14px; font-weight: 500; color: var(--accent); box-shadow: var(--raise-sm);
+      transition: box-shadow .15s;
+    }
+    .btn:active { box-shadow: var(--press-sm); }
+    .actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; }
+    .actions .btn { margin-top: 0; }
+    .stack { margin: 0; padding: 18px 20px; border-radius: 18px; box-shadow: var(--press-md); font-size: 13px; color: var(--steel); align-self: start; }
+    .stack dt { color: var(--ink); font-weight: 500; margin-top: 12px; }
+    .stack dt:first-child { margin-top: 0; }
+    .stack dd { margin: 2px 0 0; }
+
+    /* ---------- tables ---------- */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th { text-align: left; font-weight: 500; color: var(--steel); font-size: 13px; padding: 0 16px 12px 0; }
+    td { padding: 15px 16px 15px 0; vertical-align: top;
+      background:
+        linear-gradient(var(--lo), var(--lo)) left top / 100% 1px no-repeat,
+        linear-gradient(var(--hi), var(--hi)) left 1px / 100% 1px no-repeat; }
+    td:first-child { font-weight: 500; }
+    td.num { font-variant-numeric: tabular-nums; }
+    .note { margin-top: 22px; color: var(--steel); max-width: 62ch; }
+
+    /* ---------- skills ---------- */
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 6px 14px; border-radius: 11px; font-size: 13.5px; box-shadow: var(--raise-sm); }
+    .row .v.chips { max-width: none; }
+
+
+
+
+    /* ---------- competitive coding ---------- */
+    .cc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .cc {
+      padding: 22px 24px 24px; border-radius: 22px; box-shadow: var(--raise-md);
+      transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease;
+    }
+    .cc:hover { transform: translateY(-3px); box-shadow: 10px 10px 22px var(--lo), -10px -10px 22px var(--hi); }
+    .cc header { display: flex; align-items: center; gap: 12px; }
+    .cc .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: var(--press-sm); flex: none; }
+    .cc .big { margin-top: 18px; font-family: var(--serif); font-size: 46px; line-height: 1.05; color: var(--c); font-variant-numeric: tabular-nums; }
+    .cc .big small { display: block; margin-top: 6px; font-family: var(--sans); font-size: 13px; color: var(--steel); }
+    .cc p { margin-top: 14px; padding: 8px 14px; border-radius: 12px; box-shadow: var(--press-sm); font-size: 14px; }
+    @media (max-width: 640px) { .cc-grid { grid-template-columns: 1fr; gap: 18px; } .cc .big { font-size: 40px; } }
+
+    /* ---------- leadership ---------- */
+    .lead-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .lead {
+      padding: 22px 24px; border-radius: 20px; box-shadow: var(--raise-md);
+      transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease;
+    }
+    .lead:hover { transform: translateY(-3px); box-shadow: 10px 10px 22px var(--lo), -10px -10px 22px var(--hi); }
+    .lead h3 { font-size: 17px; line-height: 1.35; padding-left: 20px; position: relative; }
+    .lead h3::before { content: ""; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: var(--press-sm); }
+    .lead p { margin-top: 6px; padding-left: 20px; color: var(--steel); }
+    .lead:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    @media (max-width: 640px) { .lead-grid { grid-template-columns: 1fr; gap: 18px; } }
+
+    /* ---------- education ---------- */
+    .edu-list { display: grid; gap: 24px; }
+    .edu {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center;
+      padding: 24px 26px; border-radius: 22px; box-shadow: var(--raise-md);
+      transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease;
+    }
+    .edu:hover { transform: translateY(-3px); box-shadow: 10px 10px 22px var(--lo), -10px -10px 22px var(--hi); }
+    .edu h3 { font-size: 17px; line-height: 1.35; }
+    .edu p { margin-top: 4px; color: var(--steel); }
+    .edu-meta { display: flex; align-items: center; gap: 18px; }
+    .score { min-width: 92px; padding: 10px 14px; border-radius: 16px; box-shadow: var(--press-sm); text-align: center; }
+    .score b { display: block; font-family: var(--serif); font-weight: 400; font-size: 27px; line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .score small { display: block; color: var(--steel); font-size: 12px; }
+    .score.now b { color: var(--accent); }
+    @media (max-width: 640px) {
+      .edu { grid-template-columns: 1fr; gap: 16px; padding: 20px; }
+      .edu-meta { justify-content: space-between; }
+    }
+
+    footer { padding: 4px 0 0; text-align: center; color: var(--steel); font-size: 13px; }
+    footer a { color: var(--accent); }
+    footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 980px) {
+      .frame { grid-template-columns: 1fr; width: min(740px, calc(100% - 36px)); padding-top: 22px; gap: 28px; }
+      .rail { position: static; max-height: none; padding: 20px; gap: 16px; border-radius: 22px; }
+      .rail nav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .links { display: flex; flex-wrap: wrap; }
+      .panel { padding: 32px 26px 34px; border-radius: 24px; }
+    }
+    @media (max-width: 760px) {
+      .hero-top { grid-template-columns: 1fr; gap: 28px; }
+      .art img { max-height: 260px; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 15px; }
+      .row { grid-template-columns: 1fr; row-gap: 6px; }
+      .project { grid-template-columns: 1fr; gap: 22px; }
+      .facts { grid-template-columns: 1fr; gap: 18px; }
+      .lede { font-size: 18px; }
+      h2 { font-size: 30px; }
+      .well { padding: 10px; }
+    }
+    /* ================= ANIMATION =================
+       Idea: the page is one soft surface. Panels start flat and are
+       extruded out of it (shadows grow from zero), then their content rises in. */
+
+    /* 1. panels extrude from the surface when they enter view */
+    .js .panel {
+      opacity: 0; transform: translateY(28px) scale(.985);
+      box-shadow: 0 0 0 var(--lo), 0 0 0 var(--hi);
+      transition: opacity .8s ease, transform 1s cubic-bezier(.2,.7,.2,1), box-shadow 1.2s ease .12s;
+    }
+    .js .panel.in { opacity: 1; transform: none; box-shadow: var(--raise-lg); }
+
+    /* 2. content inside rises in, staggered by position */
+    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    .js .st { opacity: 0; }
+    .js .panel.in .st {
+      opacity: 1;
+      animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards;
+      animation-delay: calc(.3s + min(var(--i, 0), 12) * 70ms);
+    }
+
+    /* 3. hover lifts, press sinks */
+    .fact, .chip, .btn, .links a, .rail nav a {
+      transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease, color .18s ease;
+    }
+    .fact:hover { transform: translateY(-4px); box-shadow: 11px 11px 24px var(--lo), -11px -11px 24px var(--hi); }
+    .chip:hover, .btn:hover, .links a:hover { transform: translateY(-2px); }
+    .chip:active, .btn:active, .links a:active { transform: translateY(0); box-shadow: var(--press-sm); }
+
+    /* nav: the active item is pressed into the surface */
+    .rail nav a { box-shadow: inset 0 0 0 var(--lo), inset 0 0 0 var(--hi); }
+    .rail nav a:hover { box-shadow: inset 0 0 0 var(--lo), inset 0 0 0 var(--hi); color: var(--ink); transform: translateX(3px); }
+    .rail nav a.on, .rail nav a.on:hover { box-shadow: var(--press-sm); transform: none; color: var(--accent); }
+
+    /* 4. scroll progress, a groove that fills */
+    .progress { height: 8px; margin: -8px 6px 0; border-radius: 999px; box-shadow: var(--press-sm); overflow: hidden; }
+    .progress span { display: block; height: 100%; border-radius: 999px; background: var(--accent); transform-origin: left center; transform: scaleX(var(--p, 0)); }
+
+    /* 5. illustration drifts slowly inside its recess */
+    @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    .art img { animation: drift 7s ease-in-out infinite; }
+    .art { overflow: hidden; }
+
+    /* 6. terminal caret */
+    .caret { display: inline-block; width: 8px; height: 15px; margin-top: 4px; background: #5fd7a8; animation: blink 1.05s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .ln:nth-child(10) { animation-delay: 2.9s; }
+
+    /* 7. bullet dots pulse once when their row arrives */
+    @keyframes dot { 0% { transform: scale(.2); } 70% { transform: scale(1.25); } 100% { transform: scale(1); } }
+    .js .panel.in .bullets li::before { animation: dot .6s ease backwards; animation-delay: calc(.5s + min(var(--i, 0), 12) * 70ms); }
+
+    /* sidebar: fit inside the viewport on desktop at 100% zoom */
+    @media (min-width: 981px) {
+      .rail { top: 24px; padding: 22px 18px 20px; gap: 18px; max-height: calc(100vh - 48px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+      .rail::-webkit-scrollbar { display: none; }
+      .mark { font-size: 25px; }
+      .rail nav { gap: 4px; }
+      .rail nav a { padding: 7px 14px; }
+      .links { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .links a { padding: 8px 10px; font-size: 12.5px; text-align: center; }
+      .links a:first-child, .links a:last-child { grid-column: 1 / -1; }
+    }
+    @media (min-width: 981px) and (max-height: 660px) {
+      .rail { gap: 12px; padding: 16px 16px 16px; }
+      .rail nav a { padding: 5px 14px; font-size: 13.5px; }
+      .links a { padding: 6px 10px; }
+    }
+
+    /* subtle color blending: tinted atmosphere, per-section accents, small markers */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(60% 50% at 8% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%),
+        radial-gradient(55% 45% at 100% 100%, color-mix(in srgb, var(--c-teal) 8%, transparent), transparent 70%);
+    }
+    #experience { --sec: var(--accent); }
+    #projects   { --sec: var(--c-teal); }
+    #coding     { --sec: var(--c-amber); }
+    #leadership { --sec: var(--c-rose); }
+    #skills     { --sec: var(--c-green); }
+    #education  { --sec: var(--accent); }
+    .panel:not(.hero) h2::before {
+      content: ""; display: block; width: 46px; height: 7px; margin-bottom: 18px; border-radius: 999px;
+      background: var(--sec, var(--accent)); box-shadow: var(--press-sm);
+    }
+    .bullets li::before { background: var(--sec, var(--accent)); }
+    .btn { color: var(--accent); }
+    #projects .btn { color: var(--c-teal); }
+    .when { color: color-mix(in srgb, var(--accent) 55%, var(--steel)); }
+
+    /* skills: each group gets its own marker color */
+    #skills .row:nth-of-type(1) { --c: var(--accent); }
+    #skills .row:nth-of-type(2) { --c: var(--c-teal); }
+    #skills .row:nth-of-type(3) { --c: var(--c-rose); }
+    #skills .row:nth-of-type(4) { --c: var(--c-amber); }
+    #skills .row:nth-of-type(5) { --c: var(--c-green); }
+    #skills .row:nth-of-type(6) { --c: var(--accent); }
+    #skills .chip::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 9px; border-radius: 50%; background: var(--c); vertical-align: 1px; }
+
+    /* education scores */
+    .edu:nth-child(2) .score b { color: var(--c-teal); }
+    .edu:nth-child(3) .score b { color: var(--c-amber); }
+
+    /* multi-color accents, used sparingly */
+    .fact:nth-child(1) b { color: var(--accent); }
+    .fact:nth-child(2) b { color: var(--c-teal); }
+    .fact:nth-child(3) b { color: var(--c-amber); }
+    .lead:nth-child(4n+1) h3::before { background: var(--accent); }
+    .lead:nth-child(4n+2) h3::before { background: var(--c-teal); }
+    .lead:nth-child(4n+3) h3::before { background: var(--c-amber); }
+    .lead:nth-child(4n+4) h3::before { background: var(--c-rose); }
+    .progress span { background: linear-gradient(90deg, var(--accent), var(--c-teal)); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ln { opacity: 1; animation: none; }
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+      .js .panel { opacity: 1; transform: none; box-shadow: var(--raise-lg); }
+      .js .st { opacity: 1; }
+      .js .panel.in .st, .js .panel.in .bullets li::before, .art img { animation: none; }
+      .caret { animation: none; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <a class="brand" href="#">AK<span>.</span> Portfolio</a>
-      <nav>
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a>
+  <a class="skip" href="#top">Skip to content</a>
+  <div class="frame">
+    <aside class="rail">
+      <a class="mark" href="#top" aria-label="Adarsh Kumar, back to top">Adarsh Kumar</a>
+      <div class="progress" aria-hidden="true"><span></span></div>
+      <nav aria-label="Sections">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#coding">Competitive coding</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
       </nav>
-    </header>
+      <div class="links">
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=kadarshchandra@gmail.com" target="_blank" rel="noopener noreferrer">kadarshchandra@gmail.com</a>
+        <a href="https://github.com/adarsh-chandraa">GitHub</a>
+        <a href="https://www.linkedin.com/in/adarsh-kumar-12239b346/">LinkedIn</a>
+        <a href="https://leetcode.com/u/adarsh_chandra/">LeetCode</a>
+      </div>
+    </aside>
 
-    <div class="layout">
-      <aside class="panel">
-        <div class="avatar">AK</div>
-        <h2 class="name">Adarsh Kumar</h2>
-        <p class="role">Software Development Intern · CSE</p>
-        <span class="pill">Open to learning & building</span>
-        <div class="side-links">
-          <a href="https://github.com/adarsh-chandraa">⌘ GitHub profile</a>
-          <a href="https://leetcode.com/u/adarsh_chandra/">◈ LeetCode</a>
-          <a href="https://www.linkedin.com/in/adarsh-kumar-12239b346/">↗ LinkedIn</a>
-          <a href="mailto:kadarshchandra@gmail.com">✉ Email me</a>
-        </div>
-        <div class="side-title">Education</div>
-        <strong>KIIT University</strong>
-        <div class="small">B.Tech, Computer Science & Engineering</div>
-        <div class="small">June 2023 – June 2027</div>
-        <div class="small">Current CGPA: 9.83</div>
-        <div class="side-title">Based around</div>
-        <div class="small">Software engineering · Full-stack development · Competitive programming</div>
-      </aside>
-
-      <main>
-        <section class="panel hero">
+    <main id="top">
+      <section class="panel hero">
+        <div class="hero-top">
           <div>
-            <div class="eyebrow">Hello, I'm Adarsh</div>
-            <h1>Building useful things with <span>code.</span></h1>
-            <p>Computer Science student, software development intern, and problem solver who enjoys building reliable backend systems and full-stack applications.</p>
+            <h1>Adarsh Kumar</h1>
+            <p class="lede">Software development intern at Assurant, building and debugging backend systems and full-stack applications.</p>
+            <p class="lede">Computer science student at KIIT with a focus on REST APIs, database reliability and competitive programming.</p>
             <div class="actions">
-              <a class="btn primary" href="#projects">Explore projects ↓</a>
-              <a class="btn" href="mailto:kadarshchandra@gmail.com">Contact me</a>
+              <a class="btn" href="#projects">See projects</a>
+              <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=kadarshchandra@gmail.com" target="_blank" rel="noopener noreferrer">Email me</a>
             </div>
           </div>
-          <img class="hero-art" src="assets/developer-illustration.png" alt="Purple laptop and coffee cup developer illustration">
-        </section>
-
-        <section class="panel section" id="about">
-          <div class="section-head"><h2>About me</h2><span>Profile snapshot</span></div>
-          <p class="about">I am pursuing a B.Tech in Computer Science and Engineering at KIIT. My interests include backend engineering, REST APIs, full-stack development, database reliability, and competitive programming. During my internship at Assurant, I worked on API debugging, secure exception handling, application monitoring, and resolving database write conflicts.</p>
-        </section>
-
-        <section class="panel section">
-          <div class="section-head"><h2>Highlights</h2></div>
-          <div class="stats">
-            <div class="stat"><strong>9.83</strong><span>Current CGPA</span></div>
-            <div class="stat"><strong>900+</strong><span>Problems solved</span></div>
-            <div class="stat"><strong>Top 0.5%</strong><span>KIIT CSE students</span></div>
-            <div class="stat"><strong>1788</strong><span>Max LeetCode rating</span></div>
+          <div class="art">
+            <img src="assets/developer-illustration.png" alt="Purple laptop and coffee cup developer illustration">
           </div>
-        </section>
+        </div>
 
-        <section class="panel section" id="skills">
-          <div class="section-head"><h2>Technical skills</h2><span>Languages, frameworks & tools</span></div>
-          <div class="skills">
-            <span class="skill">C</span><span class="skill">C++</span><span class="skill">C#</span><span class="skill">Java</span><span class="skill">Python</span><span class="skill">Shell Script</span><span class="skill">JavaScript</span><span class="skill">TypeScript</span><span class="skill">ASP.NET Core</span><span class="skill">Entity Framework Core</span><span class="skill">React</span><span class="skill">Angular</span><span class="skill">Node.js</span><span class="skill">HTML/CSS</span><span class="skill">RESTful APIs</span><span class="skill">Microservices</span><span class="skill">HTTP</span><span class="skill">SQL Server</span><span class="skill">MySQL</span><span class="skill">PostgreSQL</span><span class="skill">Azure</span><span class="skill">Git/GitHub</span><span class="skill">Visual Studio</span><span class="skill">IntelliJ IDEA</span><span class="skill">DBMS</span><span class="skill">Data Structures & Algorithms</span>
-          </div>
-        </section>
-
-        <section class="panel section" id="experience">
-          <div class="section-head"><h2>Experience</h2><span>2026</span></div>
-          <div class="timeline">
-            <div class="entry">
-              <strong>Software Development Intern · Assurant</strong>
-              <div class="meta">2026</div>
-              <p>Developed and debugged RESTful API endpoints, fixing application-level bugs and improving endpoint reliability and error handling.</p>
-              <p>Implemented secure exception handling to prevent stack trace exposure and sensitive information leakage, and integrated Azure Application Insights for centralized logging, monitoring, and troubleshooting.</p>
-              <p>Resolved a production API failure in a retail portal by debugging Entity Framework Core traces and SQL Server duplicate-key violations, fixing database write conflicts.</p>
+        <div class="well">
+          <div class="screen" role="img" aria-label="Illustrative request trace: a failing request that exposed an internal stack trace to the client, then returning a generic error message with details logged to Application Insights.">
+            <div class="screen-bar"><span>Endpoint error handling</span><span>Illustrative trace</span></div>
+            <div class="screen-body">
+              <div class="ln"><i>1</i><span>GET /api/items/42</span></div>
+              <div class="ln"><i>2</i><span class="dim">  Unhandled exception in endpoint</span></div>
+              <div class="ln"><i>3</i><span class="bad">  Before: internal stack trace sent to the client</span></div>
+              <div class="ln"><i>4</i><span class="bad">500 + stack trace in response body</span></div>
+              <div class="ln gap"></div>
+              <div class="ln"><i>5</i><span class="dim">  After: exception handler returns a generic message</span></div>
+              <div class="ln"><i>6</i><span class="ok">500 {"message": "Something went wrong."}</span></div>
+              <div class="ln"><i>7</i><span class="ok">  Full details logged to Application Insights</span></div>
+              <div class="ln"><i></i><span class="caret"></span></div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section class="panel section" id="projects">
-          <div class="section-head"><h2>Featured projects</h2><span>Selected work</span></div>
-          <div class="projects">
-            <article class="project">
-              <h3>ShopZone</h3>
-              <div class="tech">Angular · ASP.NET Core · EF Core · SQL Server</div>
-              <p>Enterprise e-commerce platform with customer and admin product, cart, and order workflows.</p>
-              <p>Applied Repository and Unit of Work patterns, centralized configuration, API versioning, and role-based authentication.</p>
-              <a href="https://github.com/adarsh-chandraa/ShopZone">View project on GitHub ↗</a>
-            </article>
-            <article class="project">
-              <h3>Kaushal Saathi</h3>
-              <div class="tech">HTML · CSS · JavaScript</div>
-              <p>Web platform addressing employment and service accessibility in rural areas, connecting people with job opportunities and local service providers.</p>
-              <p>Designed a responsive interface with interactive navigation for multiple devices.</p>
-              <a href="https://kaushalsathi.netlify.app/">View live demo ↗</a>
-            </article>
+        <div class="facts">
+          <div class="fact"><b data-to="9.83" data-dec="2">9.83</b><span>Current CGPA, B.Tech CSE</span></div>
+          <div class="fact"><b data-to="900" data-suffix="+">900+</b><span>Problems solved on five platforms</span></div>
+          <div class="fact"><b data-to="1788">1788</b><span>Highest LeetCode rating</span></div>
+        </div>
+      </section>
+
+      <section class="panel" id="experience">
+        <h2>Experience</h2>
+        <div class="role-head">
+          <h3>Software Development Intern, Assurant</h3>
+          <span class="when">2026</span>
+        </div>
+        <ul class="bullets">
+          <li>Gained hands-on experience with API development and endpoint behavior during the internship.</li>
+          <li>Identified and resolved real-world bugs in application endpoints.</li>
+          <li>Fixed a security issue where internal stack traces were exposed to clients when requests failed.</li>
+          <li>Implemented generic error messages for clients to prevent sensitive technical details from being exposed.</li>
+          <li>Integrated error logging with Application Insights to simplify debugging and improve issue tracking.</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="projects">
+        <h2>Projects</h2>
+        <article class="project">
+          <div>
+            <h3>ShopZone</h3>
+            <p>Enterprise e-commerce platform with customer and admin workflows for products, cart and orders.</p>
+            <p>Built with Repository and Unit of Work patterns, centralized configuration, API versioning and role-based authentication.</p>
+            <a class="btn" href="https://github.com/adarsh-chandraa/ShopZone">View source on GitHub</a>
           </div>
-        </section>
+          <dl class="stack">
+            <dt>Frontend</dt><dd>Angular</dd>
+            <dt>Backend</dt><dd>ASP.NET Core, EF Core</dd>
+            <dt>Database</dt><dd>SQL Server</dd>
+          </dl>
+        </article>
+        <article class="project minor">
+          <div>
+            <h3>Kaushal Saathi</h3>
+            <p>Web platform for employment and service accessibility in rural areas, connecting people with job opportunities and local service providers.</p>
+            <p>Responsive interface with interactive navigation across devices.</p>
+            <a class="btn" href="https://kaushalsathi.netlify.app/">Open live demo</a>
+          </div>
+          <dl class="stack">
+            <dt>Built with</dt><dd>HTML, CSS, JavaScript</dd>
+            <dt>Recognition</dt><dd>3rd rank, Hult Prize 2024–25</dd>
+          </dl>
+        </article>
+      </section>
 
-        <section class="panel section" id="achievements">
-          <div class="section-head"><h2>Achievements & coding</h2><span>Competitive programming</span></div>
-          <div class="two-col">
+      <section class="panel" id="coding">
+        <h2>Competitive coding</h2>
+        <div class="cc-grid">
+          <article class="cc" style="--c: var(--c-amber)">
+            <header><span class="dot"></span><h3>LeetCode</h3></header>
+            <div class="big">1788<small>Max rating</small></div>
+            <p>Rank 720, Weekly Contest 452</p>
+          </article>
+          <article class="cc" style="--c: var(--c-rose)">
+            <header><span class="dot"></span><h3>CodeChef</h3></header>
+            <div class="big">1434<small>Max rating, 3-star</small></div>
+            <p>Global rank 336, Starters 189</p>
+          </article>
+          <article class="cc" style="--c: var(--c-green)">
+            <header><span class="dot"></span><h3>HackerRank</h3></header>
+            <div class="big">3-star<small>Badge</small></div>
+          </article>
+          <article class="cc" style="--c: var(--c-teal)">
+            <header><span class="dot"></span><h3>GeeksforGeeks</h3></header>
+            <div class="big">2-star<small>Badge</small></div>
+          </article>
+        </div>
+        <p class="note">900+ problems solved across LeetCode, GFG, CodeChef, Codeforces and HackerRank. Top 0.5% of CSE students at KIIT.</p>
+      </section>
+
+      <section class="panel" id="leadership">
+        <h2>Leadership and activities</h2>
+        <div class="lead-grid">
+          <article class="lead"><h3>IEEE CIS KIIT Chapter</h3><p>Chair</p></article>
+          <article class="lead"><h3>IoT Lab, KIIT</h3><p>Competitive programmer</p></article>
+          <article class="lead"><h3>Code Combat 1.0</h3><p>Authored the contest problems and supervised the contest.</p></article>
+          <article class="lead"><h3>Encode 4.0</h3><p>Organized the coding contest.</p></article>
+          <article class="lead"><h3>OCIT’25</h3><p>Organized the conference.</p></article>
+          <article class="lead"><h3>Hult Prize 2024–25</h3><p>Led Kaushal Saathi to 3rd rank.</p></article>
+          <article class="lead"><h3>HPL 2024</h3><p>Captained a cricket team.</p></article>
+        </div>
+      </section>
+
+      <section class="panel" id="skills">
+        <h2>Skills</h2>
+        <div class="row"><div class="k">Languages</div><div class="v chips"><span class="chip">C</span><span class="chip">C++</span><span class="chip">C#</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">Shell Script</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span></div></div>
+        <div class="row"><div class="k">Backend</div><div class="v chips"><span class="chip">ASP.NET Core</span><span class="chip">Entity Framework Core</span><span class="chip">Node.js</span><span class="chip">RESTful APIs</span><span class="chip">Microservices</span><span class="chip">HTTP</span></div></div>
+        <div class="row"><div class="k">Frontend</div><div class="v chips"><span class="chip">React</span><span class="chip">Angular</span><span class="chip">HTML/CSS</span></div></div>
+        <div class="row"><div class="k">Data</div><div class="v chips"><span class="chip">SQL Server</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">DBMS</span></div></div>
+        <div class="row"><div class="k">Cloud and tools</div><div class="v chips"><span class="chip">Azure</span><span class="chip">Git/GitHub</span><span class="chip">Visual Studio</span><span class="chip">IntelliJ IDEA</span></div></div>
+        <div class="row"><div class="k">Foundations</div><div class="v chips"><span class="chip">Data structures and algorithms</span></div></div>
+      </section>
+
+      <section class="panel" id="education">
+        <h2>Education</h2>
+        <div class="edu-list">
+          <article class="edu">
             <div>
-              <div class="side-title">Coding achievements</div>
-              <ul class="clean">
-                <li>Top 0.5% of students in CSE at KIIT.</li>
-                <li>Solved 900+ problems across LeetCode, GFG, CodeChef, Codeforces, and HackerRank.</li>
-                <li>LeetCode maximum rating: 1788; rank 720 in Weekly Contest 452.</li>
-                <li>CodeChef: 3-star, maximum rating 1434; global rank 336 in Starters 189.</li>
-                <li>HackerRank: 3-star. GeeksforGeeks: 2-star.</li>
-              </ul>
+              <h3>Kalinga Institute of Industrial Technology (KIIT)</h3>
+              <p>B.Tech, Computer Science and Engineering</p>
             </div>
+            <div class="edu-meta">
+              <span class="when">2023–2027</span>
+              <span class="score now"><b>9.83</b><small>Current CGPA</small></span>
+            </div>
+          </article>
+          <article class="edu">
             <div>
-              <div class="side-title">Leadership & activities</div>
-              <ul class="clean">
-                <li>Chair, IEEE CIS KIIT Chapter.</li>
-                <li>Competitive Programmer at IoT Lab, KIIT.</li>
-                <li>Authored Code Combat 1.0 contest problems and supervised the contest.</li>
-                <li>Organized Encode 4.0 coding contest.</li>
-                <li>Organized OCIT’25 conference.</li>
-                <li>Led Kaushal Saathi at Hult Prize 2024–25; secured 3rd rank.</li>
-                <li>Captained a cricket team in HPL 2024.</li>
-              </ul>
+              <h3>Patliputra Central School, Parbatta, Khagaria</h3>
+              <p>Class 12, CBSE</p>
             </div>
-          </div>
-        </section>
+            <div class="edu-meta">
+              <span class="when">2020–2022</span>
+              <span class="score"><b>83.4%</b><small>Score</small></span>
+            </div>
+          </article>
+          <article class="edu">
+            <div>
+              <h3>Patliputra Central School, Parbatta, Khagaria</h3>
+              <p>Class 10, CBSE</p>
+            </div>
+            <div class="edu-meta">
+              <span class="when">2019–2020</span>
+              <span class="score"><b>90%</b><small>Score</small></span>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <section class="panel section">
-          <div class="section-head"><h2>Education</h2><span>Academic background</span></div>
-          <div class="timeline">
-            <div class="entry"><strong>Kalinga Institute of Industrial Technology (KIIT)</strong><div class="meta">June 2023 – June 2027</div><p>B.Tech in Computer Science and Engineering · Current CGPA: 9.83</p></div>
-            <div class="entry"><strong>Patliputra Central School, Parbatta, Khagaria</strong><div class="meta">2020 – 2022</div><p>Class 12 · CBSE · 83.4%</p></div>
-            <div class="entry"><strong>Patliputra Central School, Parbatta, Khagaria</strong><div class="meta">2019 – 2020</div><p>Class 10 · CBSE · 90%</p></div>
-          </div>
-        </section>
-        <footer>Designed with ❤️· Adarsh Kumar · <a href="mailto:kadarshchandra@gmail.com">Get in touch</a></footer>
-      </main>
-    </div>
+      <footer>Adarsh Kumar. <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=kadarshchandra@gmail.com" target="_blank" rel="noopener noreferrer">kadarshchandra@gmail.com</a></footer>
+    </main>
   </div>
+
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.rail nav a'));
+      var map = {};
+      links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            links.forEach(function (a) { a.classList.remove('on'); });
+            if (map[e.target.id]) map[e.target.id].classList.add('on');
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+      Object.keys(map).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) io.observe(el);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // stagger index for content inside each panel
+      var sel = '.fact, .row, .bullets li, .project, .chip, .note, .role-head, .table-wrap, .edu, .lead, .cc';
+      document.querySelectorAll('.panel').forEach(function (panel) {
+        panel.querySelectorAll(sel).forEach(function (el) {
+          el.classList.add('st');
+          var idx = Array.prototype.indexOf.call(el.parentNode.children, el);
+          el.style.setProperty('--i', idx);
+        });
+      });
+
+      // count-up for the highlight numbers
+      function countUp(el) {
+        var to = parseFloat(el.dataset.to);
+        var dec = parseInt(el.dataset.dec || '0', 10);
+        var suffix = el.dataset.suffix || '';
+        if (reduce) { return; }
+        var dur = 1400, start = null;
+        function frame(t) {
+          if (start === null) start = t;
+          var p = Math.min((t - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = (to * eased).toFixed(dec) + (p === 1 ? suffix : '');
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        el.textContent = (0).toFixed(dec);
+        setTimeout(function () { requestAnimationFrame(frame); }, 700);
+      }
+
+      // reveal panels as they scroll into view
+      var counted = false;
+      var reveal = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          reveal.unobserve(e.target);
+          if (!counted && e.target.classList.contains('hero')) {
+            counted = true;
+            e.target.querySelectorAll('[data-to]').forEach(countUp);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.panel').forEach(function (p) { reveal.observe(p); });
+
+      // scroll progress groove
+      var bar = document.querySelector('.progress span');
+      var ticking = false;
+      function update() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        var p = h > 0 ? Math.min(Math.max(window.scrollY / h, 0), 1) : 0;
+        bar.style.setProperty('--p', p.toFixed(4));
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
+  </script>
 </body>
 </html>
